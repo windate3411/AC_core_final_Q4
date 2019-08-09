@@ -1,0 +1,4 @@
+{
+  "mongoUrl": "mongodb://127.0.0.1/shortenUrl",
+  "baseUrl": "http://127.0.0.1:3000"
+}

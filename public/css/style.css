@@ -1,0 +1,12 @@
+.banner {
+  background-image:url('../img/urlShorten.jpg');
+  background-size: contain;
+  height: 400px;
+}
+
+body {
+  background-image: url('../img/paper.jpg');
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}

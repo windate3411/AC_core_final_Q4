@@ -1,0 +1,16 @@
+<div class="container text-center mt-5">
+  <h1 class="m-5">Url Shortener</h1>
+  <div class="banner"></div>
+  <form action="/api/url/shorten" method="POST">
+    <div class="input-group mt-5 mb-3">
+      <input type="url" name="longUrl" class="form-control" id="longUrl" placeholder="請輸入原始網址" required>
+      <button type="submit" class="btn btn-info btn-sm" style="width: 60px">Submit</button>
+    </div>
+  </form>
+  {{#if url}}
+  <div class="input-group mt-2 mb-3">
+    <input type="text" class="result form-control" readonly value={{{shortenUrl}}}>
+    <button class="copy btn btn-secondary btn-sm" style="width: 60px">Copy</button>
+  </div>
+  {{/if}}
+</div>
