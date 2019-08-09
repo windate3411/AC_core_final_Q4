@@ -15,6 +15,9 @@ router.get('/', (req, res) => {
 router.post('/shorten', async (req, res) => {
   const { longUrl } = req.body
   const baseUrl = config.get('baseUrl')
+  const herokuUrl = config.get('herokuUrl')
+
+  console.log(req.connection.remoteAddress)
   // check baseUrl
   if (!validUrl.isUri(baseUrl)) {
     return res.status(401).json('invalid baseurl')
@@ -38,7 +41,11 @@ router.post('/shorten', async (req, res) => {
       if (url) {
         res.render('index', { shortenUrl: url.shortUrl, urlCode: url.urlCode, url })
       } else {
-        const shortUrl = baseUrl + '/' + urlCode;
+        if (req.connection.remoteAddress === '::ffff:127.0.0.1') {
+          const shortUrl = baseUrl + '/' + urlCode;
+        } else {
+          const shortUrl = herokuUrl + '/' + urlCode;
+        }
         url = new Url({
           longUrl,
           shortUrl,
