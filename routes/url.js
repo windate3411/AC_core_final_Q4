@@ -41,10 +41,11 @@ router.post('/shorten', async (req, res) => {
       if (url) {
         res.render('index', { shortenUrl: url.shortUrl, urlCode: url.urlCode, url })
       } else {
+        let shortUrl;
         if (process.env.HEROKU) {
-          const shortUrl = herokuUrl + '/' + urlCode;
+          shortUrl = herokuUrl + '/' + urlCode;
         } else {
-          const shortUrl = baseUrl + '/' + urlCode;
+          shortUrl = baseUrl + '/' + urlCode;
         }
         // if (process.env._ && process.env._.indexOf("heroku")) {
         //   const shortUrl = await herokuUrl + '/' + urlCode;
