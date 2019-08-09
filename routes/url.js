@@ -41,12 +41,11 @@ router.post('/shorten', async (req, res) => {
       if (url) {
         res.render('index', { shortenUrl: url.shortUrl, urlCode: url.urlCode, url })
       } else {
-        // if (req.connection.remoteAddress === '::ffff:127.0.0.1') {
-        //   const shortUrl = baseUrl + '/' + urlCode;
-        // } else {
-        //   const shortUrl = herokuUrl + '/' + urlCode;
-        // }
-        const shortUrl = baseUrl + '/' + urlCode;
+        if (process.env._ && process.env._.indexOf("heroku")) {
+          const shortUrl = herokuUrl + '/' + urlCode;
+        } else {
+          const shortUrl = baseUrl + '/' + urlCode;
+        }
         url = new Url({
           longUrl,
           shortUrl,
