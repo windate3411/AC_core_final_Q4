@@ -47,12 +47,6 @@ router.post('/shorten', async (req, res) => {
         } else {
           shortUrl = baseUrl + '/' + urlCode;
         }
-        // if (process.env._ && process.env._.indexOf("heroku")) {
-        //   const shortUrl = await herokuUrl + '/' + urlCode;
-        // } else {
-        //   const shortUrl = await baseUrl + '/' + urlCode;
-        // }
-
         url = new Url({
           longUrl,
           shortUrl,
